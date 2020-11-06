@@ -1,4 +1,4 @@
-package com.spring.boot.entity.salesDatabase;
+package com.spring.boot.entity;
 
 import javax.persistence.*;
 import java.util.Objects;

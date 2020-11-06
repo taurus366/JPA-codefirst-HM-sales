@@ -1,11 +1,13 @@
 package com.spring.boot.entity.salesDatabase;
 
+import com.spring.boot.entity.BaseEntity;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "sale")
-public class Sale extends BaseEntity{
+public class Sale extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")

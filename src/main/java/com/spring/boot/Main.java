@@ -89,5 +89,8 @@ public class Main {
 //                .getResultList().forEach(customer1 -> System.out.println( customer1.getProduct().getName()+" " + customer1.getCustomer().getName()));
 //        manager2.getTransaction().commit();
 //        manager2.close();
+
+        EntityManagerFactory emf3 = Persistence.createEntityManagerFactory("university_system");
+        EntityManager manager = emf3.createEntityManager();
     }
 }

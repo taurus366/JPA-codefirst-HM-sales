@@ -1,5 +1,7 @@
 package com.spring.boot.entity.salesDatabase;
 
+import com.spring.boot.entity.BaseEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -8,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "customer")
-public class Customer extends BaseEntity{
+public class Customer extends BaseEntity {
 
     @Column(name = "name",nullable = false)
     private String name;

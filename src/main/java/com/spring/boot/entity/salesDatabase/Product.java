@@ -1,5 +1,7 @@
 package com.spring.boot.entity.salesDatabase;
 
+import com.spring.boot.entity.BaseEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
