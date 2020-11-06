@@ -19,8 +19,8 @@ public class Main {
 //        EntityManagerFactory emf = Persistence.createEntityManagerFactory("wizard_deposits");
 //        EntityManager manager = emf.createEntityManager();
 
-        EntityManagerFactory emf2 = Persistence.createEntityManagerFactory("sales_database");
-        EntityManager manager2 = emf2.createEntityManager();
+//        EntityManagerFactory emf2 = Persistence.createEntityManagerFactory("sales_database");
+//        EntityManager manager2 = emf2.createEntityManager();
 
 //        Product product = new Product();
 //        product.setName("orange");
