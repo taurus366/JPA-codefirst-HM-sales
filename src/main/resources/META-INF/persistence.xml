@@ -44,7 +44,7 @@
             <property name="hibernate.connection.url"
                       value="jdbc:mysql://localhost:3306/hibernate_codefirst_hm?createDatabaseIfNotExist=true&amp;useSSL=false"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.connection.username" value="localhost"/>
             <property name="hibernate.connection.password" value="localhost"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>

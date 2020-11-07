@@ -1,9 +1,9 @@
 package com.spring.boot.entity.universitySystem;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "students")
@@ -14,6 +14,16 @@ public class Student extends Person{
 
     @Column(name = "attendance")
     private Boolean attendance;
+
+
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "students",targetEntity = Course.class)
+    private Set<Course>  courses = new HashSet<>();
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+
 
     public Student() {
 

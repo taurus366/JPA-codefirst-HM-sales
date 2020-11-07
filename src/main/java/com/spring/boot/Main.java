@@ -4,12 +4,17 @@ import com.spring.boot.entity.salesDatabase.Customer;
 import com.spring.boot.entity.salesDatabase.Product;
 import com.spring.boot.entity.salesDatabase.Sale;
 import com.spring.boot.entity.salesDatabase.StoreLocation;
+import com.spring.boot.entity.universitySystem.Course;
+import com.spring.boot.entity.universitySystem.Student;
+import com.spring.boot.entity.universitySystem.Teacher;
+import org.hibernate.Hibernate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -92,5 +97,58 @@ public class Main {
 
         EntityManagerFactory emf3 = Persistence.createEntityManagerFactory("university_system");
         EntityManager manager = emf3.createEntityManager();
+
+//        Student student = new Student();
+//        student.setFirstName("ali");
+//
+        Student student1 = new Student();
+        student1.setFirstName("ila1234");
+//
+//        Teacher teacher = new Teacher();
+//        teacher.setFirstName("zinal");
+//
+//        Course course = new Course();
+//        course.setName("test1");
+//        course.setTeacher(teacher);
+//        course.getCourses().add(student);
+
+
+        Set<Student> studentSet = new HashSet<>();
+        studentSet.add(student1);
+       // manager.getTransaction().begin();
+////        manager.persist(student);
+////        manager.persist(student1);
+////        manager.persist(teacher);
+      //  manager.persist(course);
+       // manager.getTransaction().commit();
+
+//        manager.getTransaction().begin();
+//
+//       // manager.persist(student1);
+//
+//        manager.getTransaction().commit();
+        manager.getTransaction().begin();
+//        List<Course> select_c_from_course_c = manager.createQuery("SELECT c FROM Course c WHERE c.students.size > 0", Course.class)
+//                .getResultList();
+//        System.out.println(select_c_from_course_c.size());
+//        for (Course course1: select_c_from_course_c) {
+//          course1.getStudents().forEach(student2 -> System.out.println( course1.getName()+student2.getFirstName()));
+//        }
+//        System.out.println();
+
+        List<Course> select_c_from_course_c = manager.createQuery("SELECT c FROM Course c WHERE c.name = ?1",Course.class)
+                .setParameter(1, "test1")
+                .setMaxResults(1)
+                .getResultList();
+       select_c_from_course_c.forEach(manager::detach);
+        System.out.println(select_c_from_course_c.size());
+      //Hibernate.initialize(select_c_from_course_c.get(0).getStudents().add(student1));
+        select_c_from_course_c.forEach(course1 -> course1.getCourses().add(student1));
+        select_c_from_course_c.forEach(course1 -> course1.setStudents(studentSet));
+        select_c_from_course_c.forEach(manager::merge);
+       manager.getTransaction().commit();
+        manager.close();
+
+
     }
 }
