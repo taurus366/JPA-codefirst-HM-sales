@@ -1,5 +1,9 @@
 package com.spring.boot;
 
+import com.spring.boot.entity.gp.Diagnose;
+import com.spring.boot.entity.gp.Medicament;
+import com.spring.boot.entity.gp.Patient;
+import com.spring.boot.entity.gp.Visitation;
 import com.spring.boot.entity.salesDatabase.Customer;
 import com.spring.boot.entity.salesDatabase.Product;
 import com.spring.boot.entity.salesDatabase.Sale;
@@ -95,26 +99,27 @@ public class Main {
 //        manager2.getTransaction().commit();
 //        manager2.close();
 
-        EntityManagerFactory emf3 = Persistence.createEntityManagerFactory("university_system");
-        EntityManager manager = emf3.createEntityManager();
-
-//        Student student = new Student();
-//        student.setFirstName("ali");
+//        EntityManagerFactory emf3 = Persistence.createEntityManagerFactory("university_system");
+//        EntityManager manager = emf3.createEntityManager();
 //
-        Student student1 = new Student();
-        student1.setFirstName("ila1234");
+////        Student student = new Student();
+////        student.setFirstName("ali");
+////
+////        Student student1 = new Student();
+////        student1.setFirstName("ila1234");
+////
 //
-//        Teacher teacher = new Teacher();
-//        teacher.setFirstName("zinal");
-//
+//        manager.getTransaction().begin();
 //        Course course = new Course();
 //        course.setName("test1");
-//        course.setTeacher(teacher);
-//        course.getCourses().add(student);
-
-
-        Set<Student> studentSet = new HashSet<>();
-        studentSet.add(student1);
+////        course.setTeacher(teacher);
+////        course.getCourses().add(student);
+//        Teacher teacher = new Teacher();
+//        teacher.setFirstName("zinal");
+//        teacher.getCourses().add(course);
+//        manager.getTransaction().commit();
+//        Set<Student> studentSet = new HashSet<>();
+//        studentSet.add(student1);
        // manager.getTransaction().begin();
 ////        manager.persist(student);
 ////        manager.persist(student1);
@@ -127,7 +132,7 @@ public class Main {
 //       // manager.persist(student1);
 //
 //        manager.getTransaction().commit();
-        manager.getTransaction().begin();
+     //   manager.getTransaction().begin();
 //        List<Course> select_c_from_course_c = manager.createQuery("SELECT c FROM Course c WHERE c.students.size > 0", Course.class)
 //                .getResultList();
 //        System.out.println(select_c_from_course_c.size());
@@ -136,19 +141,58 @@ public class Main {
 //        }
 //        System.out.println();
 
-        List<Course> select_c_from_course_c = manager.createQuery("SELECT c FROM Course c WHERE c.name = ?1",Course.class)
-                .setParameter(1, "test1")
-                .setMaxResults(1)
-                .getResultList();
-       select_c_from_course_c.forEach(manager::detach);
-        System.out.println(select_c_from_course_c.size());
-      //Hibernate.initialize(select_c_from_course_c.get(0).getStudents().add(student1));
-        select_c_from_course_c.forEach(course1 -> course1.getCourses().add(student1));
-        select_c_from_course_c.forEach(course1 -> course1.setStudents(studentSet));
-        select_c_from_course_c.forEach(manager::merge);
-       manager.getTransaction().commit();
-        manager.close();
+//        List<Course> select_c_from_course_c = manager.createQuery("SELECT c FROM Course c WHERE c.name = ?1",Course.class)
+//                .setParameter(1, "test1")
+//                .setMaxResults(1)
+//                .getResultList();
+//       select_c_from_course_c.forEach(manager::detach);
+//        System.out.println(select_c_from_course_c.size());
+//      //Hibernate.initialize(select_c_from_course_c.get(0).getStudents().add(student1));
+//        select_c_from_course_c.forEach(course1 -> course1.getCourses().add(student1));
+//        select_c_from_course_c.forEach(course1 -> course1.setStudents(studentSet));
+//        select_c_from_course_c.forEach(manager::merge);
+//       manager.getTransaction().commit();
+//        manager.close();
 
-
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("gp_db");
+//        EntityManager manager = emf.createEntityManager();
+//
+//        manager.getTransaction().begin();
+//
+////        Patient ali = new Patient();
+////        ali.setFirstName("ali");
+//
+//        Medicament medicament = new Medicament();
+//        medicament.setName("aspirin C");
+//
+////        Visitation visitationAli = new Visitation();
+////        visitationAli.setPatients(ali);
+//
+//        Visitation visitation = new Visitation();
+//        visitation.setComment("forTest");
+//
+////        Diagnose diagnose = new Diagnose();
+////        diagnose.setName("cay_shukarie");
+////       diagnose.setMedicament(medicament);
+////       diagnose.setVisitation(visitationAli);
+//
+//        Patient g = new Patient();
+//        g.setFirstName("asdasdasdas");
+//        Patient ali1 = manager.createQuery("SELECT e FROM Patient e WHERE e.firstName = ?1",Patient.class)
+//                .setParameter(1, "ali")
+//                .getSingleResult();
+//
+//
+//       ali1.getVisitations().add(visitation);
+//        visitation.setPatients(g);
+//
+//
+//
+////        manager.persist(ali);
+////        manager.persist(medicament);
+////        manager.persist(diagnose);
+////        manager.persist(visitationAli);
+//        manager.getTransaction().commit();
+//        manager.close();
     }
 }
